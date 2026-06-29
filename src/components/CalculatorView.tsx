@@ -35,8 +35,9 @@ export function CalculatorView({
             className="custom-input" 
             value={calcInput}
             onChange={(e) => {
-              setCalcInput(e.target.value);
-              handleCalculate(e.target.value);
+              const sanitized = e.target.value.replace(/[^0-9-]/g, '');
+              setCalcInput(sanitized);
+              handleCalculate(sanitized);
             }}
             placeholder="Ej. 7992739871"
           />
