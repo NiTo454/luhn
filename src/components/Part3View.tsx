@@ -35,7 +35,6 @@ export function Part3View({ loadCalcPreset, loadValPreset }: Part3ViewProps) {
       </p>
 
       <div className="part3-grid">
-        {/* Subsection 1 */}
         <div>
           <h3 style={{ color: '#a5b4fc', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Calculator size={18} /> 1. Cálculo del Dígito Verificador (x)
@@ -60,7 +59,6 @@ export function Part3View({ loadCalcPreset, loadValPreset }: Part3ViewProps) {
           ))}
         </div>
 
-        {/* Subsection 2 */}
         <div>
           <h3 style={{ color: '#a5b4fc', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ShieldCheck size={18} /> 2. Verificación de Números de Tarjeta

@@ -35,8 +35,9 @@ export function ValidatorView({
             className="custom-input" 
             value={valInput}
             onChange={(e) => {
-              setValInput(e.target.value);
-              handleValidate(e.target.value);
+              const sanitized = e.target.value.replace(/[^0-9-]/g, '');
+              setValInput(sanitized);
+              handleValidate(sanitized);
             }}
             placeholder="Ej. 5262-3656-4154-29262"
           />

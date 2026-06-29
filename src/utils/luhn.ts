@@ -1,21 +1,21 @@
 export interface LuhnStep {
   digit: number;
-  originalIndex: number; // index from right (0 is rightmost)
+  originalIndex: number;
   isDoubled: boolean;
-  doubledValue: number; // digit * 2 or digit
-  sumExpression: string; // e.g. "1+8" or "9" or "4"
-  finalValue: number; // reduced single digit sum value
+  doubledValue: number;
+  sumExpression: string;
+  finalValue: number;
 }
 
 export interface LuhnCalculationResult {
   rawInput: string;
   cleanedInput: string;
-  steps: LuhnStep[]; // ordered left-to-right as in original number
+  steps: LuhnStep[];
   totalSum: number;
   checkDigit: number;
-  method1Result: number; // (sum * 9) % 10
-  method2Result: number; // (10 - (sum % 10)) % 10
-  unitDigit: number; // sum % 10
+  method1Result: number;
+  method2Result: number;
+  unitDigit: number;
   fullNumber: string;
 }
 
@@ -35,9 +35,7 @@ export function cleanNumberString(str: string): string {
 }
 
 /**
- * Calculates the check digit for a partial account number payload.
- * In a partial payload P, position 0 from right will become position 1 in the full number (with check digit appended).
- * Therefore, every digit at EVEN index from right in P (0, 2, 4...) is doubled!
+ * Calcula el dígito verificador para una secuencia numérica.
  */
 export function calculateLuhnCheckDigit(input: string): LuhnCalculationResult {
   const cleaned = cleanNumberString(input);
@@ -98,9 +96,7 @@ export function calculateLuhnCheckDigit(input: string): LuhnCalculationResult {
 }
 
 /**
- * Validates a complete account number (with check digit at the end).
- * Position 0 from right is the check digit (kept as is).
- * Position 1, 3, 5... from right are doubled!
+ * Valida un número completo comprobando la congruencia módulo 10.
  */
 export function validateLuhnNumber(input: string): LuhnValidationResult {
   const cleaned = cleanNumberString(input);
