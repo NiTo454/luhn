@@ -13,13 +13,11 @@ export type TabType = 'calc' | 'val' | 'part3' | 'theory';
 export function useLuhnApp() {
   const [activeTab, setActiveTab] = useState<TabType>('calc');
 
-  // State for Calculator
   const [calcInput, setCalcInput] = useState<string>('7992739871');
   const [calcResult, setCalcResult] = useState<LuhnCalculationResult>(() =>
     calculateLuhnCheckDigit('7992739871')
   );
 
-  // State for Validator
   const [valInput, setValInput] = useState<string>('5262-3656-4154-29262');
   const [valResult, setValResult] = useState<LuhnValidationResult>(() =>
     validateLuhnNumber('5262-3656-4154-29262')
